@@ -1,5 +1,9 @@
+# -*- coding: utf-8 -*-
 # ---------------------------
 # 配置与常量定义
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+
 from kivy.config import Config
 from kivy.animation import Animation
 from kivy.uix.anchorlayout import AnchorLayout
