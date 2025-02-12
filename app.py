@@ -180,7 +180,7 @@ class TimelineWidget(Widget):
         assert content in ("event", "routine")
         monday = self.get_current_week_monday()
         sunday = monday + datetime.timedelta(days=6)
-        filename = f"saves_x/{content}_{monday.strftime('%Y%m%d')}-{sunday.strftime('%Y%m%d')}.json"
+        filename = f"saves/{content}_{monday.strftime('%Y%m%d')}-{sunday.strftime('%Y%m%d')}.json"
         log(f"get_week_filename: {filename} (current_week_offset={self.current_week_offset})", "yellow")
         return filename
 
@@ -220,16 +220,16 @@ class TimelineWidget(Widget):
 
     def save_recent_colors(self):
         try:
-            with open("saves_x/recent_colors.json", 'w', encoding='utf-8') as f:
+            with open("saves/recent_colors.json", 'w', encoding='utf-8') as f:
                 json.dump(self.recent_colors, f, ensure_ascii=False, indent=2)
             log("Save recent colors successfully", "yellow")
         except Exception as e:
             log(f"Save recent colors failed: {e}", "red")
 
     def load_recent_colors(self):
-        if os.path.exists("saves_x/recent_colors.json"):
+        if os.path.exists("saves/recent_colors.json"):
             try:
-                with open("saves_x/recent_colors.json", 'r', encoding='utf-8') as f:
+                with open("saves/recent_colors.json", 'r', encoding='utf-8') as f:
                     self.recent_colors = json.load(f)
                 log("Load recent colors successfully", "yellow")
             except Exception as e:
